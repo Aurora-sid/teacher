@@ -32,23 +32,17 @@ export default struct trap {
           }
         })
       }
-      .columnsTemplate('1fr 1fr 1fr ') // 4行2列
-      .rowsTemplate('1fr') // 4行2列
-      .height(90)
-      // .rowsGap(12) // 行间距
-      // .columnsGap(8) // 列间距
-      .backgroundColor(Color.White)
-      .width('100%')
-      .margin('5vp')
+       .columnsTemplate('1fr 1fr 1fr ') // 4行2列
+       .rowsTemplate('1fr') // 4行2列
+      // // .rowsGap(12) // 行间距
+      // // .columnsGap(8) // 列间距
+      // .width('100%')
 
     }
-    .width('95%')
-    .borderRadius('50vp')
-    .padding({
-      top:'2vp',
-      bottom:'8vp',
-      // right:'12vp',
-      left:'1vp'
-    })
+    .width('100%')
+    .borderRadius('25vp')
+    .backgroundColor(Color.White)
+    .height(90)
+    .margin({bottom:'12vp'})
   }
 }

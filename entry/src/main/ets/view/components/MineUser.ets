@@ -24,8 +24,7 @@ export default struct MineUser {
     .height('100vp')
     .margin({
       top:'30vp',
-      bottom:'12vp',
-      right:'22vp'
+      bottom:'12vp'
     })
     .borderRadius('25vp')
     .padding({left:'28vp'})

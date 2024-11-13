@@ -37,8 +37,7 @@ export default struct My {
           })
       }
       .width('100%')
-      .margin('10vp')
-      .padding('10vp')
+      .padding('20vp')
       .height('100%')
     }
     .backgroundColor('#f1f3f5')
