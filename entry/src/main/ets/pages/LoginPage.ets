@@ -30,7 +30,6 @@ struct Login {
           .fontWeight(FontWeight.Bold)
         // 用户名，密码输入信息
         TextInput({placeholder:'请输入用户名'})
-          .backgroundImage($r("app.media.yonghuming"))
           .backgroundImageSize(10)
           .inputStyle()
           .onChange(data=> { // 输入值发生变化，触发回调，data代表输入的内容
@@ -39,7 +38,6 @@ struct Login {
           })
 
         TextInput({placeholder:'请输入密码'})
-          .backgroundImage($r("app.media.suo"))
           .backgroundImageSize(10)
           .type(InputType.Password) // 输入框类型
           .inputStyle() // 公共样式函数

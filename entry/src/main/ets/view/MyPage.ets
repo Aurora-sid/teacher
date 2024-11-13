@@ -1,6 +1,7 @@
 import router from '@ohos.router';
 import MineUser from './components/MineUser'
 import MineList from './components/MineList'
+import trap from './components/trap';
 @Component
 export default struct My {
   @State message: string = '我的';
@@ -13,6 +14,8 @@ export default struct My {
           .alignSelf(ItemAlign.Start)
         // 用户描述
         MineUser()
+        // 列表
+        trap()
         //列表
         MineList()
         // 退出登录
@@ -23,7 +26,7 @@ export default struct My {
           .fontColor(Color.Black)
           .backgroundColor('#e5e8ea')
           .margin({
-            top:'30vp'
+            top:'12vp'
           })
           .onClick(()=>{
             router.pushUrl({

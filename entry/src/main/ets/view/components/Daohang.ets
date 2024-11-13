@@ -29,11 +29,11 @@ export default struct Daohang {
     },
     {
       title:'地理·',
-      img:$r('app.media.geography_1')
+      img:$r('app.media.geography')
     },
     {
       title:'生物·',
-      img:$r('app.media.biology_3')
+      img:$r('app.media.biology')
     },
   ];
   build() {
