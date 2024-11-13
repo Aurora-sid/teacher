@@ -1,6 +1,7 @@
 import Home from '../view/HomePage'
 import Choice from '../view/JinxuanPage'
 import My from '../view/MyPage'
+import Message from '../view/MessagePage'
 @Entry
 @Component
 struct Main {
@@ -41,6 +42,8 @@ struct Main {
                 Home()
               }else if (index === 1){
                 Choice()
+              }else if(index === 3){
+                Message()
               }
               else {
                 My()
