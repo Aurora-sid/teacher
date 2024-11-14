@@ -1,5 +1,6 @@
 import Home from '../view/HomePage'
-import Choice from '../view/JinxuanPage'
+import TeacherPage from '../view/TeacherPage'
+import LibraryPage from '../view/LibraryPage'
 import My from '../view/MyPage'
 import Message from '../view/MessagePage'
 @Entry
@@ -41,8 +42,12 @@ struct Main {
               if (index === 0) {
                 Home()
               }else if (index === 1){
-                Choice()
-              }else if(index === 3){
+                TeacherPage()
+              }
+              else if(index === 2){
+                LibraryPage()
+              }
+              else if(index === 3){
                 Message()
               }
               else {
