@@ -4,36 +4,36 @@ export default struct list {
   @State message: string = '列表组件';
   private ListData:Array<ItemType> = [
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad1',
+      img:$r('app.media.L1')
     },
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad2',
+      img:$r('app.media.L2')
     },
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad3',
+      img:$r('app.media.L3')
     },
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad4',
+      img:$r('app.media.L4')
     },
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad5',
+      img:$r('app.media.L5')
     },
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad6',
+      img:$r('app.media.L6')
     },
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad7',
+      img:$r('app.media.L7')
     },
     {
-      title:'techer',
-      img:$r('app.media.ome_icon')
+      title:'ad8',
+      img:$r('app.media.L8')
     },
   ];
   build() {

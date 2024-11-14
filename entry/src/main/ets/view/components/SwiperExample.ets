@@ -1,9 +1,10 @@
 @Component
 export default struct SwiperExample {
   @State swiperData:Array<Resource>= [
-    $r('app.media.H1'),
-    $r('app.media.C2'),
-    $r('app.media.M3'),
+    $r('app.media.Sw1'),
+    $r('app.media.Sw2'),
+    $r('app.media.Sw5'),
+    $r('app.media.Sw4'),
   ];
 
   build() {
