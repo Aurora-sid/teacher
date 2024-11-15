@@ -9,9 +9,9 @@ export default struct My {
   build() {
     Row() {
       Column(){
-        Text(this.message)
-          .fontSize('16fp')
-          .alignSelf(ItemAlign.Start)
+        // Text(this.message)
+        //   .fontSize('16fp')
+        //   .alignSelf(ItemAlign.Start)
         // 用户描述
         MineUser()
         // 列表

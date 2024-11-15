@@ -2,6 +2,7 @@
   "src": [
     "pages/LoginPage",
     "pages/MainPage",
-    "pages/MessagePages/MySuggestion"
+    "pages/MessagePages/MySuggestion",
+    "pages/MinePages/MyTeacherPage"
   ]
 }
