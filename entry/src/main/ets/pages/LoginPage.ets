@@ -1,8 +1,11 @@
+// @ts-nocheck
 // 导入页面路由
 import router from '@ohos.router';
 // ohos,open Harmony OS
 // 弹窗接口
 import promptAction from '@ohos.promptAction';
+import axios from '@ohos/axios';
+import {http} from '@kit.NetworkKit';
 @Entry
 @Component
 struct Login {
