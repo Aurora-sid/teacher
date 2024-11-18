@@ -38,10 +38,10 @@ export default struct list {
   ];
   build() {
     Column() {
-        Text('列表')
-          .fontSize(15)
-          .fontWeight(FontWeight.Medium)
-          .alignSelf(ItemAlign.Start)
+        // Text('列表')
+        //   .fontSize(15)
+        //   .fontWeight(FontWeight.Medium)
+        //   .alignSelf(ItemAlign.Start)
        List({space:12}){
         ForEach(this.ListData,(item:ItemType)=>{
           ListItem(){

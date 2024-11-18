@@ -5,6 +5,8 @@ import router from '@ohos.router';
 // 弹窗接口
 import promptAction from '@ohos.promptAction';
 import axios from '@ohos/axios';
+import { promptAction } from '@kit.ArkUI';
+import postRequest from'../../api/axios'
 import {http} from '@kit.NetworkKit';
 @Entry
 @Component
@@ -12,9 +14,8 @@ struct Login {
   @State message: string = '欢迎登录';
   @State user:string = '';
   @State password: string = '';
-  @State userList: Array<any> = []; // 确保初始为空数组，而非 undefined
-  @State isPresent: boolean = false;
-
+  // @State userList: Array<any> = []; // 确保初始为空数组，而非 undefined
+  // @State isPresent: boolean = false;
 
   private item:Array<{title:string,iconSelected:Resource}> =[
     {title:'微信',iconSelected:$r('app.media.WeChat')},
@@ -22,29 +23,42 @@ struct Login {
     {title:'手机',iconSelected:$r('app.media.phone')},
   ]
   // // 获取用户列表的方法
-  // getUserList() {
-  //   // 请求地址：http://47.92.137.107:8080/test/userList
-  //   axios.get('localhost:8080/test/userList')
-  //     .then(response => {
-  //       console.log('接口返回数据:', response.data); // 打印数据查看
+  // async getUserPassword() {
+  //   console.info("hhhhh")
+  //   // 测试 POST 请求
+  //   const postResult = await postRequest('user/login', { username: '张三' });
+  //   console.log('POST 请求结果:', postResult);
   //
-  //       // 确保返回的数据是一个数组
-  //       if (Array.isArray(response.data)) {
-  //         this.userList = response.data; // 将获取到的用户列表数据赋值给userList状态
-  //       } else {
-  //         console.error('返回数据不是数组:', response.data);
-  //         this.userList = []; // 如果返回的数据不是数组，确保 userList 是一个空数组
-  //       }
-  //     })
-  //     .catch(error => {
-  //       // 处理请求错误
-  //       promptAction.showToast({
-  //         message: '请求失败: ' + error.message,
-  //         duration: 3000,
-  //         bottom: '60vp'
-  //       });
-  //     });
   // }
+  uploadData(data) {
+    // 请求地址：请替换成你的实际 API 端点
+    const url = 'http://47.92.137.107:8080/user/login';
+
+    axios.post(url, data)
+      .then(response => {
+        // 处理成功响应
+        console.log('上传成功:', response.data);
+
+        // 可以根据需求进行进一步处理，例如显示提示信息
+        promptAction.showToast({
+          message: '上传成功',
+          duration: 2000,
+          bottom: '60vp'
+        });
+      })
+      .catch(error => {
+        // 处理请求错误
+        console.error('上传失败:', error);
+
+        promptAction.showToast({
+          message: '上传失败: ' + error.message,
+          duration: 3000,
+          bottom: '60vp'
+        });
+      });
+  }
+
+
 
   build() {
     // 页面布局
@@ -61,8 +75,10 @@ struct Login {
           .fontSize('25fp')
           .fontWeight(FontWeight.Bold)
         // 用户名，密码输入信息
-        TextInput({ placeholder: '请输入用户名' })
-          .backgroundImageSize(10)
+        TextInput({ placeholder: '请输入用户名'})
+        //  .placeholderColor(Color.Black) // 设置占位符颜色为红色
+         // .fontColor(Color.Black)
+        //  .backgroundColor('#D3D3D3')
           .inputStyle()
           .onChange(data => { // 输入值发生变化，触发回调，data代表输入的内容
             this.user = data;
@@ -70,7 +86,9 @@ struct Login {
           })
 
         TextInput({ placeholder: '请输入密码' })
-          .backgroundImageSize(10)
+          //.fontColor(Color.Black)
+      //    .backgroundImageSize(10)
+         // .backgroundColor('#D3D3D3')
           .type(InputType.Password) // 输入框类型
           .inputStyle() // 公共样式函数
           .onChange(data => { // 输入值发生变化，触发回调，data代表输入的内容
@@ -101,8 +119,8 @@ struct Login {
               })
             }
             else {
-              //   this.getUserList(); // 获取用户列表
-
+              this.uploadData(this.user)
+           //   this.getUserList(); // 获取用户列表
               router.pushUrl({
                 url: 'pages/MainPage'
               }).catch((error: Error) => {
@@ -111,37 +129,6 @@ struct Login {
             }
           }
           );
-
-        // 显示获取到的用户列表
-        // if (Array.isArray(this.userList) && this.userList.length > 0) {
-        //   Row() {
-        //     Text('用户列表:')
-        //       .fontSize('20fp')
-        //       .fontWeight(FontWeight.Bold)
-        //       .padding('10vp');
-        //     ForEach(this.userList, (item: { id: number; name: string }) => {
-        //       Row() {
-        //         Text(`用户ID: ${item.id}, 用户名: ${item.name}`)
-        //           .fontSize('15fp')
-        //           .padding('5vp');
-        //       }
-        //       .width('100%')
-        //       .justifyContent(FlexAlign.Start);
-        //     });
-        //   }
-        //   .width('100%')
-        //   .margin({ top: '20vp' });
-        // } else {
-        //   // 如果用户列表为空，显示提示
-        //   Row() {
-        //     Text('没有获取到用户数据')
-        //       .fontSize('15fp')
-        //       .fontColor(Color.Red)
-        //       .padding('10vp');
-        //   }
-        //   .width('100%')
-        //   .justifyContent(FlexAlign.Start);
-        // }
 
             // 路由跳转
 
@@ -171,14 +158,15 @@ struct Login {
         }
         .width('100%')
         .justifyContent(FlexAlign.SpaceAround)
-        .margin({ top: '20vp' });
+        .margin({ top: '80vp' });
 
       }
       .width('100%')
       .height('100%')
 
     }
-    .backgroundImage('/pages/Picture/04.jpg',{fit:ImageFit.Fill})
+    .backgroundImage('/pages/Picture/04.jpg')
+    .backgroundImageSize(1)
     .width('100%')
     .height('100%')
   }
