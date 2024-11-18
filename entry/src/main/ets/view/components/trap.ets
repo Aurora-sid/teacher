@@ -1,3 +1,4 @@
+import router from '@ohos.router';
 import {ItemType} from '../../model/types'
 @Component
 export default struct trap {
@@ -5,15 +6,18 @@ export default struct trap {
   private nayData:Array<ItemType> = [
     {
       title:'我的订单',
-      img:$r('app.media.order')
+      img:$r('app.media.order'),
+      url:'pages/MinePages/MyOrderPage'
     },
     {
       title:'我的钱包',
-      img:$r('app.media.wallet')
+      img:$r('app.media.wallet'),
+      url:'pages/MinePages/MyWalletPage'
     },
     {
       title:'优惠券',
-      img:$r('app.media.discount')
+      img:$r('app.media.discount'),
+      url:'pages/MinePages/DiscountPage'
     }
   ];
   build() {
@@ -29,6 +33,13 @@ export default struct trap {
                 .fontSize(14)
                 .margin({ top:'10vp' })
             }
+            .onClick(()=>{
+              router.pushUrl({
+                url:item.url
+              }).catch((error:Error)=>{
+
+              })
+            })
           }
         })
       }

@@ -8,7 +8,7 @@ export default struct MineList {
     {
       title:'消息推送',
       img:$r('app.media.messagePush'),
-      url:'pages/LoginPage'
+      url:'pages/MinePages/MessagePushPage'
     },
     {
       title:'我的老师',
@@ -17,27 +17,27 @@ export default struct MineList {
     },{
     title:'我的评价',
     img:$r('app.media.evalution'),
-    url:'pages/MinePages/MyTeacher'
+    url:'pages/MinePages/MyEvaluationPage'
   },
     {
       title:'我的回答',
       img:$r('app.media.answer'),
-      url:'pages/MinePages/MyTeacher'
+      url:'pages/MinePages/MyAnswerPage'
     },
     {
       title:'我的课程',
       img:$r('app.media.subject'),
-      url:'pages/MinePages/MyTeacher'
+      url:'pages/MinePages/MyCoursePage'
     },
     {
       title:'学习计划与总结',
       img:$r('app.media.studyPlan'),
-      url:'pages/MinePages/MyTeacher'
+      url:'pages/MinePages/StudyPlanPage'
     },
     {
       title:'设置',
       img:$r('app.media.settings'),
-      url:'pages/MinePages/MyTeacher'
+      url:'pages/MinePages/SettingsPage'
     }
   ]
   build() {

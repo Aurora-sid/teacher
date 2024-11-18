@@ -3,6 +3,15 @@
     "pages/LoginPage",
     "pages/MainPage",
     "pages/MessagePages/MySuggestion",
-    "pages/MinePages/MyTeacherPage"
+    "pages/MinePages/MyTeacherPage",
+    "pages/MinePages/MyEvaluationPage",
+    "pages/MinePages/MyOrderPage",
+    "pages/MinePages/MyAnswerPage",
+    "pages/MinePages/MyCoursePage",
+    "pages/MinePages/StudyPlanPage",
+    "pages/MinePages/SettingsPage",
+    "pages/MinePages/MessagePushPage",
+    "pages/MinePages/MyWalletPage",
+    "pages/MinePages/DiscountPage"
   ]
 }
