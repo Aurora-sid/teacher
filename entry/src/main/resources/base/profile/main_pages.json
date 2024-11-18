@@ -12,6 +12,14 @@
     "pages/MinePages/SettingsPage",
     "pages/MinePages/MessagePushPage",
     "pages/MinePages/MyWalletPage",
-    "pages/MinePages/DiscountPage"
+    "pages/MinePages/DiscountPage",
+    "pages/SubjectPages/ChinesePage",
+    "pages/SubjectPages/MathPage",
+    "pages/SubjectPages/EnglishPage",
+    "pages/SubjectPages/PhysicsPage",
+    "pages/SubjectPages/ChemistryPage",
+    "pages/SubjectPages/BiologyPage",
+    "pages/SubjectPages/GeographyPage",
+    "pages/SubjectPages/PoliticsPage"
   ]
 }

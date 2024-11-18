@@ -1,3 +1,4 @@
+import router from '@ohos.router';
 import {ItemType} from '../../model/types'
 @Component
 export default struct Daohang {
@@ -5,35 +6,43 @@ export default struct Daohang {
   private nayData:Array<ItemType> = [
     {
       title:'语文',
-      img:$r('app.media.chinese')
+      img:$r('app.media.chinese'),
+      url:'pages/SubjectPages/ChinesePage'
     },
     {
       title:'数学',
-      img:$r('app.media.math')
+      img:$r('app.media.math'),
+      url:'pages/SubjectPages/MathPage'
     },
     {
       title:'英语',
-      img:$r('app.media.english')
+      img:$r('app.media.english'),
+      url:'pages/SubjectPages/EnglishPage'
     },
     {
       title:'物理',
-      img:$r('app.media.physics')
+      img:$r('app.media.physics'),
+      url:'pages/SubjectPages/PhysicsPage'
     },
     {
       title:'化学',
-      img:$r('app.media.chemistry')
+      img:$r('app.media.chemistry'),
+      url:'pages/SubjectPages/ChemistryPage'
     },
     {
       title:'政治',
-      img:$r('app.media.politics')
+      img:$r('app.media.politics'),
+      url:'pages/SubjectPages/PoliticsPage'
     },
     {
       title:'地理·',
-      img:$r('app.media.geography')
+      img:$r('app.media.geography'),
+      url:'pages/SubjectPages/GeographyPage'
     },
     {
       title:'生物·',
-      img:$r('app.media.biology')
+      img:$r('app.media.biology'),
+      url:'pages/SubjectPages/BiologyPage'
     },
   ];
   build() {
@@ -49,6 +58,20 @@ export default struct Daohang {
                 .fontSize(14)
                 .margin({ top:'5vp' })
             }
+            // .opacity(()=>{
+            //   router.pushUrl({
+            //     url:item.url
+            //   }).catch((error:Error)=>{
+            //
+            //   })
+            // })
+            .onClick(()=>{
+              router.pushUrl({
+                url:item.url
+              }).catch((error:Error)=>{
+
+              })
+            })
           }
         })
       }
