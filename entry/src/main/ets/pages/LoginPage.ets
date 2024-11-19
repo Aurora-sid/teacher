@@ -4,26 +4,24 @@ import router from '@ohos.router';
 // ohos,open Harmony OS
 // 弹窗接口
 import promptAction from '@ohos.promptAction';
-
 import { testApi,getPassword, register } from "../../api/axios"
-
+import { promptAction } from '@kit.ArkUI';
 @Entry
 @Component
 struct Login {
   @State message: string = '欢迎登录';
   @State user:string = '';
   @State password: string = '';
-  @State userList: Array<any> = []; // 确保初始为空数组，而非 undefined
-  @State isPresent: boolean = false;
-
-
-
+  // @State userList: Array<any> = []; // 确保初始为空数组，而非 undefined
+  // @State isPresent: boolean = false;
   private item:Array<{title:string,iconSelected:Resource}> =[
     {title:'微信',iconSelected:$r('app.media.WeChat')},
     {title:'QQ',iconSelected:$r('app.media.QQ')},
     {title:'手机',iconSelected:$r('app.media.phone')},
   ]
-  // 获取用户列表的方法
+
+
+
 
 
   build() {
@@ -41,8 +39,10 @@ struct Login {
           .fontSize('25fp')
           .fontWeight(FontWeight.Bold)
         // 用户名，密码输入信息
-        TextInput({ placeholder: '请输入用户名' })
-          .backgroundImageSize(10)
+        TextInput({ placeholder: '请输入用户名'})
+        //  .placeholderColor(Color.Black) // 设置占位符颜色为红色
+         // .fontColor(Color.Black)
+        //  .backgroundColor('#D3D3D3')
           .inputStyle()
           .maxLength(20)
           .onChange(data => { // 输入值发生变化，触发回调，data代表输入的内容
@@ -51,7 +51,9 @@ struct Login {
           })
 
         TextInput({ placeholder: '请输入密码' })
-          .backgroundImageSize(10)
+          //.fontColor(Color.Black)
+      //    .backgroundImageSize(10)
+         // .backgroundColor('#D3D3D3')
           .type(InputType.Password) // 输入框类型
           .inputStyle() // 公共样式函数
           .onChange(data => { // 输入值发生变化，触发回调，data代表输入的内容
@@ -92,41 +94,9 @@ struct Login {
                   // 错误提示
                 })
               }
-
             }
           }
           );
-
-        // 显示获取到的用户列表
-        // if (Array.isArray(this.userList) && this.userList.length > 0) {
-        //   Row() {
-        //     Text('用户列表:')
-        //       .fontSize('20fp')
-        //       .fontWeight(FontWeight.Bold)
-        //       .padding('10vp');
-        //     ForEach(this.userList, (item: { id: number; name: string }) => {
-        //       Row() {
-        //         Text(`用户ID: ${item.id}, 用户名: ${item.name}`)
-        //           .fontSize('15fp')
-        //           .padding('5vp');
-        //       }
-        //       .width('100%')
-        //       .justifyContent(FlexAlign.Start);
-        //     });
-        //   }
-        //   .width('100%')
-        //   .margin({ top: '20vp' });
-        // } else {
-        //   // 如果用户列表为空，显示提示
-        //   Row() {
-        //     Text('没有获取到用户数据')
-        //       .fontSize('15fp')
-        //       .fontColor(Color.Red)
-        //       .padding('10vp');
-        //   }
-        //   .width('100%')
-        //   .justifyContent(FlexAlign.Start);
-        // }
 
             // 路由跳转
 
@@ -156,7 +126,7 @@ struct Login {
         }
         .width('100%')
         .justifyContent(FlexAlign.SpaceAround)
-        .margin({ top: '20vp' });
+        .margin({ top: '80vp' });
 
       }
       .width('100%')

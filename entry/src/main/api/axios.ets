@@ -28,6 +28,3 @@ export const getPassword = (username:string) => {
 //调用demo
 // let result =   await getPassword(this.user)
 // console.log(result.data.password)
-
-
-
