@@ -4,8 +4,9 @@ import router from '@ohos.router';
 // ohos,open Harmony OS
 // 弹窗接口
 import promptAction from '@ohos.promptAction';
-import axios from '@ohos/axios';
-import {http} from '@kit.NetworkKit';
+
+import { testApi,getPassword, register } from "../../api/axios"
+
 @Entry
 @Component
 struct Login {
@@ -16,35 +17,14 @@ struct Login {
   @State isPresent: boolean = false;
 
 
+
   private item:Array<{title:string,iconSelected:Resource}> =[
     {title:'微信',iconSelected:$r('app.media.WeChat')},
     {title:'QQ',iconSelected:$r('app.media.QQ')},
     {title:'手机',iconSelected:$r('app.media.phone')},
   ]
-  // // 获取用户列表的方法
-  // getUserList() {
-  //   // 请求地址：http://47.92.137.107:8080/test/userList
-  //   axios.get('localhost:8080/test/userList')
-  //     .then(response => {
-  //       console.log('接口返回数据:', response.data); // 打印数据查看
-  //
-  //       // 确保返回的数据是一个数组
-  //       if (Array.isArray(response.data)) {
-  //         this.userList = response.data; // 将获取到的用户列表数据赋值给userList状态
-  //       } else {
-  //         console.error('返回数据不是数组:', response.data);
-  //         this.userList = []; // 如果返回的数据不是数组，确保 userList 是一个空数组
-  //       }
-  //     })
-  //     .catch(error => {
-  //       // 处理请求错误
-  //       promptAction.showToast({
-  //         message: '请求失败: ' + error.message,
-  //         duration: 3000,
-  //         bottom: '60vp'
-  //       });
-  //     });
-  // }
+  // 获取用户列表的方法
+
 
   build() {
     // 页面布局
@@ -64,6 +44,7 @@ struct Login {
         TextInput({ placeholder: '请输入用户名' })
           .backgroundImageSize(10)
           .inputStyle()
+          .maxLength(20)
           .onChange(data => { // 输入值发生变化，触发回调，data代表输入的内容
             this.user = data;
             console.info('user: ' + data)
@@ -91,7 +72,7 @@ struct Login {
         Button('登录', { type: ButtonType.Capsule, stateEffect: true }) // 按钮类型
           .width('90%')
           .margin('10vp')
-          .onClick(() => {
+          .onClick(async () => {
             if (this.user == '' || this.password == '') {
               // 不可跳转,弹窗提示
               promptAction.showToast({
@@ -101,13 +82,17 @@ struct Login {
               })
             }
             else {
-              //   this.getUserList(); // 获取用户列表
+                 let result =   await getPassword(this.user)
+                   console.log(result.data.password)
+              if(this.password === result.data.password){
+                console.log("验证通过，密码正确")
+                router.pushUrl({
+                  url: 'pages/MainPage'
+                }).catch((error: Error) => {
+                  // 错误提示
+                })
+              }
 
-              router.pushUrl({
-                url: 'pages/MainPage'
-              }).catch((error: Error) => {
-                // 错误提示
-              })
             }
           }
           );
@@ -178,7 +163,8 @@ struct Login {
       .height('100%')
 
     }
-    .backgroundImage('/pages/Picture/04.jpg',{fit:ImageFit.Fill})
+    .backgroundImage('/pages/Picture/04.jpg')
+    .backgroundImageSize(1)
     .width('100%')
     .height('100%')
   }
