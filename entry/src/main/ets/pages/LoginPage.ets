@@ -12,13 +12,13 @@ struct Login {
   @State message: string = '欢迎登录';
   @State user:string = '';
   @State password: string = '';
-
+  @State account: string = ''
+  @State password: string = ''
   private item:Array<{title:string,iconSelected:Resource}> =[
     {title:'微信',iconSelected:$r('app.media.WeChat')},
     {title:'QQ',iconSelected:$r('app.media.QQ')},
     {title:'手机',iconSelected:$r('app.media.phone')},
   ]
-
 
   build() {
     // 页面布局
@@ -98,7 +98,11 @@ struct Login {
                 console.log("验证通过，密码正确")
                 console.log(JSON.stringify(result.data))
                 router.pushUrl({
-                  url: 'pages/MainPage'
+                  url: 'pages/MainPage',
+                  params: {
+                    account: this.user,
+                    password: this.password
+                  }
                 }).catch((error: Error) => {
                   // 错误提示
                 })

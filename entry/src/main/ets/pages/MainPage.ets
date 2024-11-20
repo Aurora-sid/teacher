@@ -3,10 +3,14 @@ import TeacherPage from '../view/TeacherPage'
 import LibraryPage from '../view/LibraryPage'
 import My from '../view/MyPage'
 import Message from '../view/MessagePage'
+import router from '@ohos.router'
 @Entry
 @Component
 struct Main {
   @State message: string = '首页';
+  // 获取前一个页面传递过来的数据
+  @State account: string = ''
+  @State password: string = ''
   // 控制Tabs组件进行页签切换
   controller: TabsController = new TabsController()
   private item:Array<{title:string,iconSelected:Resource,iconNormal:Resource}> =[
@@ -17,6 +21,17 @@ struct Main {
      {title:'我的',iconSelected:$r('app.media.mine_icon_'),iconNormal:$r('app.media.My_icon')},
   ]
   @State currentIndex:number = 0; // 索引
+
+  aboutToAppear(): void {
+    if (router.getParams() !== undefined && router.getParams() !== null) {
+      let record = router.getParams() as Record<string, string>;
+      if (record !== undefined && record !== null) {
+        this.account = record['account']
+        this.password = record['password']
+        console.info('接收到前一个页面的参数：', JSON.stringify(record))
+      }
+    }
+  }
 
   // @Builder 装饰器 自定义构建函数
   @Builder TabBuilder(title,iconSelected,iconNormal,index){
