@@ -20,6 +20,7 @@
     "pages/SubjectPages/ChemistryPage",
     "pages/SubjectPages/BiologyPage",
     "pages/SubjectPages/GeographyPage",
-    "pages/SubjectPages/PoliticsPage"
+    "pages/SubjectPages/PoliticsPage",
+    "pages/LoginPages/RegisterPage"
   ]
 }

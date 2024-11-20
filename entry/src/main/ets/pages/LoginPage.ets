@@ -12,16 +12,12 @@ struct Login {
   @State message: string = '欢迎登录';
   @State user:string = '';
   @State password: string = '';
-  // @State userList: Array<any> = []; // 确保初始为空数组，而非 undefined
-  // @State isPresent: boolean = false;
+
   private item:Array<{title:string,iconSelected:Resource}> =[
     {title:'微信',iconSelected:$r('app.media.WeChat')},
     {title:'QQ',iconSelected:$r('app.media.QQ')},
     {title:'手机',iconSelected:$r('app.media.phone')},
   ]
-
-
-
 
 
   build() {
@@ -32,7 +28,7 @@ struct Login {
         Image($r("app.media.register"))
           .width('80vp') // 80 = '80vp'
           .height('80vp')
-          .margin({ top: '115vp' })
+          .margin({ top: '180vp' })
           .borderRadius(100)
         // 登录
         Text(this.message)
@@ -47,7 +43,7 @@ struct Login {
           .maxLength(20)
           .onChange(data => { // 输入值发生变化，触发回调，data代表输入的内容
             this.user = data;
-            console.info('user: ' + data)
+           // console.info('user: ' + data)
           })
 
         TextInput({ placeholder: '请输入密码' })
@@ -58,7 +54,7 @@ struct Login {
           .inputStyle() // 公共样式函数
           .onChange(data => { // 输入值发生变化，触发回调，data代表输入的内容
             this.password = data;
-            console.info('password: ' + data)
+          //  console.info('password: ' + data)
           })
         // 文字提示
         Row() {
@@ -78,20 +74,41 @@ struct Login {
             if (this.user == '' || this.password == '') {
               // 不可跳转,弹窗提示
               promptAction.showToast({
-                message: '用户名或密码为空',
+                message: '用户名或密码不能为空',
                 duration: 3000, // 弹窗持续时间
                 bottom: '60vp'
               })
             }
             else {
                  let result =   await getPassword(this.user)
-                   console.log(result.data.password)
-              if(this.password === result.data.password){
+                  // console.log(result.data.password)
+              // console.log(result.code)
+           //   console.log(JSON.stringify(result))
+           //      console.log(JSON.stringify(result.message))
+              if(result.code ===0){
+             //   console.log("用户存在")
+                console.log("验证未通过，用户不存在")
+                promptAction.showToast({
+                  message: '用户不存在',
+                  duration: 4000, // 弹窗持续时间
+                  bottom: '100vp'
+                })
+              }
+              else if(this.password === result.data.password){
                 console.log("验证通过，密码正确")
+                console.log(JSON.stringify(result.data))
                 router.pushUrl({
                   url: 'pages/MainPage'
                 }).catch((error: Error) => {
                   // 错误提示
+                })
+              }
+              else if(this.password!== result.data.password){
+               console.log("验证未通过，密码错误")
+                promptAction.showToast({
+                  message: '用户名或密码错误',
+                  duration: 4000, // 弹窗持续时间
+                  bottom: '100vp'
                 })
               }
             }
@@ -102,9 +119,16 @@ struct Login {
 
        // 其他
         Row(){
-          Text('其他登录方式')
+          Text('注册账号')
             .textStyle()
             .fontColor(Color.Blue)
+            .onClick(() => {
+              router.pushUrl({
+                url: 'pages/LoginPages/RegisterPage'
+              }).catch((error: Error) => {
+                // 错误提示
+              })
+            })
         }
         .width('100%')
         .justifyContent(FlexAlign.SpaceAround)
@@ -115,7 +139,6 @@ struct Login {
               Image(item.iconSelected)
                 .borderRadius(110)
             }
-              //.backgroundImage(item.iconSelected)
               .width('50vp') // 设置按钮宽度
               .height('50vp') // 设置按钮高度
               .backgroundColor(Color.White)
@@ -133,7 +156,7 @@ struct Login {
       .height('100%')
 
     }
-    .backgroundImage('/pages/Picture/04.jpg')
+    .backgroundImage('/pages/Picture/03.jpg')
     .backgroundImageSize(1)
     .width('100%')
     .height('100%')
