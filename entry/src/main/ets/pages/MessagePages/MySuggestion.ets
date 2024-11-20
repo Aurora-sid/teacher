@@ -1,4 +1,5 @@
 import router from '@ohos.router'
+import {getUserName} from '../../../utils/data'
 @Entry
 @Component
 struct MySuggestion {
@@ -147,6 +148,7 @@ struct MySuggestion {
 
                 .onClick(() => {
                   console.info('提交')
+                  console.log(getUserName())
                 })
             }
             .margin({
