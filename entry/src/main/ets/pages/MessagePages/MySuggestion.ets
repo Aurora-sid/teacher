@@ -1,9 +1,19 @@
 import router from '@ohos.router'
-
+import promptAction from '@ohos.promptAction';
+// <<<<<<< HEAD
+//
+// =======
+import {getUserName} from '../../../utils/data'
+import {getSuggest } from '../../../api/axios';
+// >>>>>>> eb98ba99b8eaaf89e3b369172f6e150abbbf2876
 @Entry
 @Component
 struct MySuggestion {
   @State message: string = '我的建议'
+  @State subject: string = '';
+  @State theme: string = '';
+  @State suggestion: string = '';
+  @State userName: string = getUserName()
 
   build() {
     Row() {
@@ -38,6 +48,7 @@ struct MySuggestion {
                 left:'10vp',
               })
               .justifyContent(FlexAlign.Center)
+
               Column() {
                 Select([{ value: '语文', icon: $r('app.media.chinese') },
                   { value: '数学', icon: $r('app.media.math') },
@@ -53,8 +64,12 @@ struct MySuggestion {
                   .fontColor('#182431')
                   .selectedOptionFont({ size: 16, weight: 400 })
                   .optionFont({ size: 16, weight: 400 })
-                  .onSelect((index: number) => {
+                  .onSelect((index: number, value: string) => {
                     console.info('Select:' + index)
+                   //this.theme = Select [index].value;
+                    console.info('Theme:' + this.theme)
+                    this.theme = value;
+                    console.info('Theme:' + this.theme)
                   })
                   .height(40)
                   .width(180)
@@ -86,6 +101,10 @@ struct MySuggestion {
               .justifyContent(FlexAlign.Center)
               Column() {
                 TextInput({placeholder: '请输入主题'})
+                  .onChange(data => {
+                    this.subject = data
+                    console.info('Subject:' + data)
+                  })
                   .width(200)
                   .height(40)
                   .borderStyle(BorderStyle.Solid)
@@ -120,6 +139,10 @@ struct MySuggestion {
                   .borderStyle(BorderStyle.Solid)
                   .borderRadius(10)
                   .borderColor(Color.Black)
+                  .onChange(data => {
+                    this.suggestion = data
+                    console.info('Suggestion:' + data)
+                  })
                 //  .borderColor("#D3D3D3")
                   .borderWidth(1)
               }
@@ -146,8 +169,27 @@ struct MySuggestion {
                 .width("85%")
                 .height("9%")
 
-                .onClick(() => {
+                .onClick(async () => {
                   console.info('提交')
+                  console.log(getUserName())
+                  if (this.subject == '' || this.suggestion == '' || this.theme == '') {
+                    promptAction.showToast({
+                      message: '请填写完整信息',
+                      duration: 4000, // 弹窗持续时间
+                      bottom: '150vp'
+                    })
+                  }
+                  else{
+                    let data =   await getSuggest({subject: this.subject, suggestion: this.suggestion, theme: this.theme,
+                      username: getUserName()})
+                    //console.log(JSON.stringify(data))
+                    promptAction.showToast({
+                      message: '提交成功',
+                      duration: 4000, // 弹窗持续时间
+                      bottom: '150vp'
+                    })
+
+                  }
                 })
             }
             .margin({

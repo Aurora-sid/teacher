@@ -6,6 +6,7 @@ import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
 import { testApi,getPassword, register } from "../../api/axios"
 import { promptAction } from '@kit.ArkUI';
+import {setUserName} from '../../utils/data'
 @Entry
 @Component
 struct Login {
@@ -97,6 +98,7 @@ struct Login {
               else if(this.password === result.data.password){
                 console.log("验证通过，密码正确")
                 console.log(JSON.stringify(result.data))
+                setUserName(this.user)
                 router.pushUrl({
                   url: 'pages/MainPage',
                   params: {

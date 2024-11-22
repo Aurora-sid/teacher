@@ -31,10 +31,10 @@ export const getPassword = (username:string) => {
 
 // 建议接口
 export const getSuggest = (item:{
-  "subject": "string",
-  "suggestion": "string",
-  "theme": "string",
-  "username": "string"
+  subject: string,
+  suggestion: string,
+  theme: string,
+  username: string
 }) => {
   return http.post('suggestion/giveSuggestion', item)
 }
