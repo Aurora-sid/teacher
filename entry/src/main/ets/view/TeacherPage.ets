@@ -9,9 +9,10 @@ export default struct Teacher {
   build() {
     Row() {
       Column(){
-        Text(this.message)
-          .fontSize('16fp')
-          .alignSelf(ItemAlign.Start)
+        // Text(this.message)
+        //   .fontSize('16fp')
+        //   .alignSelf(ItemAlign.Start)
+       // TeacherList()
       }
       .width('100%')
       .padding('20vp')
