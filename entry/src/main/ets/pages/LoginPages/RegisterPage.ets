@@ -174,6 +174,9 @@ struct RegisterPage {
           }
           else{
              let data =   await register({username:this.user,password:this.password})
+            if(data.code === 10000){
+              router.back()
+            }
              console.log(JSON.stringify(data))
 
           }
