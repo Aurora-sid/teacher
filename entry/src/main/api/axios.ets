@@ -28,3 +28,18 @@ export const getPassword = (username:string) => {
 //调用demo
 // let result =   await getPassword(this.user)
 // console.log(result.data.password)
+
+// 获取老师列表
+export const getTeacherList=()=>{
+        return http.get('teacher/getTeacherList')
+}
+
+// 预约老师
+export const setTeacherState=(name:string,startTime:string,endTime:string,state:string)=>{
+  return http.post('teacher/setTeacherState',{name:name,starttime:startTime,endtime:endTime,state})
+}
+
+// 设置用户老师
+export const setUserTeacher=(username:string,userTeacher:string)=>{
+  return http.post('user/setUserTeacher',{username,userteacher:userTeacher})
+}
