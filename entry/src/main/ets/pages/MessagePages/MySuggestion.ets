@@ -1,11 +1,9 @@
 import router from '@ohos.router'
 import promptAction from '@ohos.promptAction';
-// <<<<<<< HEAD
-//
-// =======
+
 import {getUserName} from '../../../utils/data'
 import {getSuggest } from '../../../api/axios';
-// >>>>>>> eb98ba99b8eaaf89e3b369172f6e150abbbf2876
+
 @Entry
 @Component
 struct MySuggestion {
