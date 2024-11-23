@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "@ohos/axios";
 
 // axios 请求配置
-const config = {
+const config = {//47.92.137.107
   baseURL:'http://47.92.137.107:8080/',
   // baseURL: '/api',
   timeout: 1000

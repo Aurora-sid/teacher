@@ -8,7 +8,7 @@ export default struct Message {
     {
       title: '预约的老师消息',
       img: $r('app.media.WeChat'),
-      url:'pages/LoginPage'
+      url:'pages/MessagePages/TeacherMessage.'
     },
     {
       title: '我要提建议',

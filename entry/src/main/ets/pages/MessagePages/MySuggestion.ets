@@ -67,9 +67,9 @@ struct MySuggestion {
                   .onSelect((index: number, value: string) => {
                     console.info('Select:' + index)
                    //this.theme = Select [index].value;
-                    console.info('Theme:' + this.theme)
-                    this.theme = value;
-                    console.info('Theme:' + this.theme)
+
+                    this.subject = value;
+
                   })
                   .height(40)
                   .width(180)
@@ -102,8 +102,7 @@ struct MySuggestion {
               Column() {
                 TextInput({placeholder: '请输入主题'})
                   .onChange(data => {
-                    this.subject = data
-                    console.info('Subject:' + data)
+                    this.theme = data
                   })
                   .width(200)
                   .height(40)

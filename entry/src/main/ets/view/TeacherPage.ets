@@ -6,10 +6,11 @@ import ListExample from './components/ListExample'
 import promptAction from '@ohos.promptAction';
 import {getTeacherList,setTeacherState,setUserTeacher} from '../../api/axios'
 import {getUserName} from '../../utils/data'
+import resourceManager from '@ohos.resourceManager';
 @Component
 export default struct Teacher {
   @State message: string = '名师';
-  @State teacherList:Array<{id:number,name:string,phone:string,subject:string,starttime:string,endtime:string,describe:string,state:string,price:string}> =[
+  @State teacherList:Array<{id:number,name:string,phone:string,subject:string,starttime:string,endtime:string,describe:string,state:string,price:string,icon:string}> =[
     // {"id":1,"name":"王老师","phone":"15161353301","subject":"语文","starttime":"6：00","endtime":"12：00","describe":"毕业于北京大学，拥有20年教学经验","state":"繁忙","price":"300"},
     // {"id":2,"name":"许老师","phone":"87696009","subject":"数学","starttime":null,"endtime":null,"describe":"毕业于北京大学，拥有10年的教学经验","state":"空闲","price":"400"},
     // {"id":3,"name":"张老师","phone":"333666","subject":"英语","starttime":null,"endtime":null,"describe":"初中毕业，有2年代课经验","state":"空闲","price":"30"},
@@ -55,7 +56,7 @@ export default struct Teacher {
     Column() {
       Text("在线教师")
       List({space:12}){
-        ForEach(this.teacherList,(item:{name:string,phone:string,subject:string,describe:string,state:string,price:string},index:number)=>{
+        ForEach(this.teacherList,(item:{name:string,phone:string,subject:string,describe:string,state:string,price:string,icon:string},index:number)=>{
           ListItem(){
               Column(){
                 Row(){
@@ -103,8 +104,6 @@ export default struct Teacher {
       .padding(10)
       .backgroundColor(Color.Green)
       .alignListItem(ListItemAlign.Center)
-
-
 
     }
     .height('100%')

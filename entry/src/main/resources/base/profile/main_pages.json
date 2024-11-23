@@ -21,6 +21,7 @@
     "pages/SubjectPages/BiologyPage",
     "pages/SubjectPages/GeographyPage",
     "pages/SubjectPages/PoliticsPage",
-    "pages/LoginPages/RegisterPage"
+    "pages/LoginPages/RegisterPage",
+    "pages/MessagePages/TeacherMessage"
   ]
 }

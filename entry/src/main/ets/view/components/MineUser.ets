@@ -1,4 +1,5 @@
 import {ItemType} from '../../model/types'
+import {getUserName} from '../../../utils/data'
 @Component
 export default struct MineUser {
   @State message: string = '用户描述';
@@ -9,7 +10,7 @@ export default struct MineUser {
         .width('50vp')
         .height('50vp')
       Column(){
-        Text('大C')
+        Text(getUserName())
           .fontSize('20fp')
         Text('12345678wes')
           .fontSize('16vp')

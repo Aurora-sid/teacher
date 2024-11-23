@@ -53,5 +53,15 @@ export const setTeacherState=(name:string,startTime:string,endTime:string,state:
 // 设置用户老师
 export const setUserTeacher=(username:string,userTeacher:string)=>{
   return http.post('user/setUserTeacher',{username,userteacher:userTeacher})
-
 }
+
+// 根据用户名查询预约的老师老师
+export const getUserTeacher=(username:string)=>{
+  return http.get('user/getUserTeacher',{username})
+}
+
+// 根据用户名查取不同用户提的建议
+export const getSuggestion=(username:string)=>{
+  return http.get('suggestion/getSuggestion',{username})
+}
+
