@@ -4,7 +4,7 @@ import {getSuggestion} from '../../../api/axios'
 @Entry
 @Component
 struct MyListsPage {
-  @State message: string = '我的评价'
+  @State message: string = '我的建议和评价'
   @State userSuggestion:Array<{suggestion:string,theme:string,subject:string,username:string}> =
 [
 ]
