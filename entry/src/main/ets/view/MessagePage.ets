@@ -7,22 +7,22 @@ export default struct Message {
   private listData: Array<ItemType> = [
     {
       title: '预约的老师消息',
-      img: $r('app.media.WeChat'),
+      img: $r('app.media.appointTeacher'),
       url:'pages/MessagePages/TeacherMessage'
     },
     {
       title: '我要提建议',
-      img: $r('app.media.WeChat'),
+      img: $r('app.media.question'),
       url:'pages/MessagePages/MySuggestion'
     },
     {
       title: '消息论坛',
-      img: $r('app.media.WeChat'),
+      img: $r('app.media.MessageForum'),
       url:'pages/LoginPage'
     },
     {
       title: '优惠信息',
-      img: $r('app.media.WeChat'),
+      img: $r('app.media.finiteDiscount'),
       url:'pages/LoginPage'
     }
 
@@ -36,8 +36,8 @@ export default struct Message {
             .fontSize(20)
         }
         .width('100%')
-        .height('15%')
-        .backgroundColor(Color.Red)
+        .height('10%')
+        .backgroundColor('#F08080')
         .justifyContent(FlexAlign.Center)
 
         Row() {
@@ -83,7 +83,7 @@ export default struct Message {
 
         }
         .width('100%')
-        .height('85%')
+        .height('90%')
         .padding({
           top:'5vp',
           bottom:'5vp',
