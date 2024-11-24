@@ -1,5 +1,6 @@
 import router from '@ohos.router';
 import LibraryList from './components/LibraryList';
+@Entry
 @Component
 export default struct Library {
   @State message: string = '图书';
