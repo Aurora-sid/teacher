@@ -22,6 +22,7 @@
     "pages/SubjectPages/GeographyPage",
     "pages/SubjectPages/PoliticsPage",
     "pages/LoginPages/RegisterPage",
-    "pages/MessagePages/TeacherMessage"
+    "pages/MessagePages/TeacherMessage",
+    "view/LibraryPage"
   ]
 }

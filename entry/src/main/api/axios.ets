@@ -1,6 +1,6 @@
 // api.ts
 import http from '../utils/request';
-
+// import { Result } from '../utils/request';
 interface LoginResponse {
   success?: boolean;
   message?: string;

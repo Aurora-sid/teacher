@@ -1,5 +1,6 @@
 import router from '@ohos.router';
 import LibraryList from './components/LibraryList';
+@Entry
 @Component
 export default struct Library {
   @State message: string = '图书';
@@ -17,7 +18,8 @@ export default struct Library {
       }
       .width('100%')
       .height('10%')
-      .backgroundColor(Color.Yellow)
+      .backgroundColor('#FFD700')
+      .borderRadius(10)
       .justifyContent(FlexAlign.Start)
      .padding(10)
 

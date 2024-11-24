@@ -22,7 +22,7 @@ struct TeacherMessage {
       }
       .width('100%')
       .height('10%')
-      .backgroundColor(Color.Yellow)
+      .backgroundColor('#F5FFFA')
       .justifyContent(FlexAlign.Start)
       .padding(10)
 
@@ -36,7 +36,7 @@ struct TeacherMessage {
               Column() {
                 Text("老师: " + item.content)
                   .fontSize(16)
-                  .backgroundColor(Color.Blue)
+                  .backgroundColor('#87CEEB')
                   .padding(10)
                   .borderRadius(8)
               }
@@ -49,7 +49,7 @@ struct TeacherMessage {
               Column() {
                 Text("我: " + item.content)
                   .fontSize(16)
-                  .backgroundColor(Color.Green)
+                  .backgroundColor('#f1f3f5')
                   .padding(10)
                   .borderRadius(8)
 
@@ -68,8 +68,8 @@ struct TeacherMessage {
       Row() {
         TextInput({ placeholder: "请输入消息..." })
           .width("75%")
-          .height("400")
-          .fontSize(16)
+          .height("100%")
+          .fontSize(20)
           .onChange((value: string) => {
             this.newMessage = value;
           })
@@ -84,7 +84,7 @@ struct TeacherMessage {
             }
           })
       }
-      .height(50)
+      .height(60)
       .padding(10)
       .alignItems(VerticalAlign.Center)
     }

@@ -10,12 +10,12 @@ import resourceManager from '@ohos.resourceManager';
 @Component
 export default struct Teacher {
   @State message: string = '名师';
-  @State teacherList:Array<{id:number,name:string,phone:string,subject:string,starttime:string,endtime:string,describe:string,state:string,price:string,icon:string}> =[
-    // {"id":1,"name":"王老师","phone":"15161353301","subject":"语文","starttime":"6：00","endtime":"12：00","describe":"毕业于北京大学，拥有20年教学经验","state":"繁忙","price":"300"},
-    // {"id":2,"name":"许老师","phone":"87696009","subject":"数学","starttime":null,"endtime":null,"describe":"毕业于北京大学，拥有10年的教学经验","state":"空闲","price":"400"},
-    // {"id":3,"name":"张老师","phone":"333666","subject":"英语","starttime":null,"endtime":null,"describe":"初中毕业，有2年代课经验","state":"空闲","price":"30"},
-    // {"id":4,"name":"李老师","phone":"5556662","subject":"数学","starttime":null,"endtime":null,"describe":"毕业于江苏大学，有10年教学经验","state":"空闲","price":"100"}
-  ]
+  @State teacherList:Array<{id:number,name:string,phone:string,subject:string,starttime:string,endtime:string,describe:string,state:string,price:string}> =[
+   {"id":1,"name":"王老师","phone":"15161353301","subject":"语文","starttime":"6：00","endtime":"12：00","describe":"毕业于北京大学，拥有20年教学经验","state":"繁忙","price":"300"},
+ {"id":2,"name":"许老师","phone":"87696009","subject":"数学","starttime":null,"endtime":null,"describe":"毕业于北京大学，拥有10年的教学经验","state":"空闲","price":"400"},
+ {"id":3,"name":"张老师","phone":"333666","subject":"英语","starttime":null,"endtime":null,"describe":"初中毕业，有2年代课经验","state":"空闲","price":"30"},
+ {"id":4,"name":"李老师","phone":"5556662","subject":"数学","starttime":null,"endtime":null,"describe":"毕业于江苏大学，有10年教学经验","state":"空闲","price":"100"}
+ ]
   @State imgList:Array<{url:Resource}> = [
     {url:$r('app.media.T')},
     {url:$r('app.media.T2')},
@@ -54,7 +54,16 @@ export default struct Teacher {
   }
   build() {
     Column() {
-      Text("在线教师")
+      Row() {
+        Text("在线教师")
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .textAlign(TextAlign.Center)
+         .width('100%')
+         .height('8%')
+          .borderRadius(10)
+         .backgroundColor('#FCE4EC')
+      }
       List({space:12}){
         ForEach(this.teacherList,(item:{name:string,phone:string,subject:string,describe:string,state:string,price:string,icon:string},index:number)=>{
           ListItem(){
@@ -72,15 +81,15 @@ export default struct Teacher {
                       .fontSize(15)
                     Text("状态: "+item.state)
                       .fontSize(15)
-                  }.width("50%").alignItems(HorizontalAlign.Start)
+                  }.width("60%").alignItems(HorizontalAlign.Start)
                 }.height("70%")
-                Text(item.describe).backgroundColor(Color.Orange).padding(2)
+                Text(item.describe).backgroundColor('#ADD8E6').padding(2)
               }.width("100%")
           }
-          .height(200)
+          .height(220)
           .width("100%")
           .borderRadius(10)
-          .backgroundColor(Color.Blue)
+          .backgroundColor('#F5FFFA')
           .onClick(()=>{
             if(item.state === "繁忙"){
               promptAction.showToast({
@@ -102,7 +111,7 @@ export default struct Teacher {
       .height('100%')
       .width('100%')
       .padding(10)
-      .backgroundColor(Color.Green)
+      .backgroundColor('#F8F8FF')
       .alignListItem(ListItemAlign.Center)
 
     }
@@ -219,7 +228,7 @@ struct CustomDialogExample {
           }
           .height('10%')
           .width('100%')
-          .backgroundColor('F5F5F5')
+          .backgroundColor('#F5F5F5')
           .margin({ top: 15 })
 
           Row({ space: 40 }) {

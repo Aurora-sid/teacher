@@ -6,13 +6,14 @@ export default struct MineUser {
 
   build() {
     Row() {
-      Image($r('app.media.chemistry'))
+      Image($r('app.media.TX'))
         .width('50vp')
+        .borderRadius('10vp')
         .height('50vp')
       Column(){
         Text(getUserName())
           .fontSize('20fp')
-        Text('12345678wes')
+        Text('32206110 (85/87)')
           .fontSize('16vp')
           .margin({top:'5vp'})
       }.alignItems(HorizontalAlign.Start)

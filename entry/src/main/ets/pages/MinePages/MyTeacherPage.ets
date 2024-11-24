@@ -87,8 +87,8 @@ struct MyListsPage {
             }.width("50%").alignItems(HorizontalAlign.Start)
           }.height("80%")
           Row().margin(5)
-          Text(this.teacher.describe).backgroundColor(Color.Orange).padding(2)
-        }.width("80%").backgroundColor(Color.Blue).height("30%").borderRadius(10).padding(10)
+          Text(this.teacher.describe).backgroundColor('#FAEBD7').padding(2)
+        }.width("80%").backgroundColor('#7BB6CC').height("30%").borderRadius(10).padding(10)
       }
     }
     .height('100%')
