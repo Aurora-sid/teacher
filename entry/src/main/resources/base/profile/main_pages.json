@@ -23,6 +23,7 @@
     "pages/SubjectPages/PoliticsPage",
     "pages/LoginPages/RegisterPage",
     "pages/MessagePages/TeacherMessage",
-    "view/LibraryPage"
+    "view/LibraryPage",
+    "view/TeacherPage"
   ]
 }

@@ -65,6 +65,7 @@ export const getSuggestion=(username:string)=>{
   return http.get('suggestion/getSuggestion',{username})
 }
 
+//<<<<<<< Updated upstream
 export const registerCoupon=(item:{username:string,value:number,min:number})=>{
   return http.post('coupon/register',item)
 }
@@ -88,3 +89,14 @@ export const setUserCount=(item:{count:number,username:string})=>{
   return http.post('wallet/setUserCount',item)
 }
 
+//=======
+// 发放优惠券
+export const setDiscount=(min:number,value: number)=>{
+  return http.post('coupon/register',{min,value})
+}
+// 获取优惠券
+export const getCoupon=(username:string)=>{
+  return http.get('coupon/getUserCoupon',{username})
+}
+
+//>>>>>>> Stashed changes

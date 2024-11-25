@@ -30,6 +30,7 @@ struct MyOrderPage {
     // console.log(JSON.stringify(this.teacher));
   }
   build() {
+
     // 判断 teacher.id 是否为 -1
     if (this.teacher.id === -1) {
       // 无预约老师时的显示内容lisi
@@ -41,6 +42,22 @@ struct MyOrderPage {
     }else {
 
       Column() {
+        // Row() {
+        //   Image($r('app.media.left'))
+        //     .width(25)
+        //     .onClick(()=>{router.back()})
+        //
+        //   Text('我的订单')
+        //     .fontSize(20)
+        //     .margin({ left: 100 })
+        // }
+        // .width('100%')
+        // .height('10%')
+        // .backgroundColor('#FFD700')
+        // .borderRadius(10)
+        // .justifyContent(FlexAlign.Start)
+        // .padding(10)
+
         Text('我的订单')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
@@ -76,7 +93,6 @@ struct MyOrderPage {
 
 
         }
-
         Button('返回', { type: ButtonType.Normal, stateEffect: true })
           .width('50%')
           .height(30)

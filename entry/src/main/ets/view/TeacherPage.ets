@@ -8,6 +8,7 @@ import {getTeacherList,setTeacherState,setUserTeacher,getUserCoupon,deleteUserCo
 import {getUserName,getTeacherMoney,setTeacherMoney} from '../../utils/data'
 import resourceManager from '@ohos.resourceManager';
 @Component
+@Entry
 export default struct Teacher {
   @State message: string = '名师';
   @State teacherList:Array<{id:number,name:string,phone:string,subject:string,starttime:string,endtime:string,describe:string,state:string,price:string}> =[
