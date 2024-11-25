@@ -65,3 +65,26 @@ export const getSuggestion=(username:string)=>{
   return http.get('suggestion/getSuggestion',{username})
 }
 
+export const registerCoupon=(item:{username:string,value:number,min:number})=>{
+  return http.post('coupon/register',item)
+}
+
+export const getUserCoupon=(username:string)=>{
+  return http.get('coupon/getUserCoupon',{username})
+}
+
+export const deleteUserCoupon=(id:number)=>{
+  return http.get('coupon/deleteUserCoupon',{id})
+}
+export const registerUserCount = (item:{count:number,username:string})=>{
+  return http.post('wallet/register',item)
+}
+
+export const getUserCount=(username:string)=>{
+  return http.get('wallet/getUserCount',{username})
+}
+
+export const setUserCount=(item:{count:number,username:string})=>{
+  return http.post('wallet/setUserCount',item)
+}
+

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import router from '@system.router'
 import promptAction from '@ohos.promptAction';
-import { testApi,getPassword, register } from "../../../api/axios";
+import { testApi,getPassword, register,registerUserCount } from "../../../api/axios";
 @Entry
 @Component
 struct RegisterPage {
@@ -174,6 +174,7 @@ struct RegisterPage {
           }
           else{
              let data =   await register({username:this.user,password:this.password})
+            registerUserCount({count:3000,username:this.user})
             if(data.code === 10000){
               router.back()
             }

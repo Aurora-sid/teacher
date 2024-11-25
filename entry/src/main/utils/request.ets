@@ -9,8 +9,8 @@ const config = {//47.92.137.107
 
 // 定义返回值类型
 interface Result<T = any> {
-  status: number;
-  statusText: string;
+  code: number;
+  message: string;
   data: T;
 }
 

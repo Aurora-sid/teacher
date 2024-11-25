@@ -4,8 +4,8 @@ import MineList from './components/MineList'
 import trap from './components/trap';
 import ListExample from './components/ListExample'
 import promptAction from '@ohos.promptAction';
-import {getTeacherList,setTeacherState,setUserTeacher} from '../../api/axios'
-import {getUserName} from '../../utils/data'
+import {getTeacherList,setTeacherState,setUserTeacher,getUserCoupon,deleteUserCoupon,setUserCount,getUserCount} from '../../api/axios'
+import {getUserName,getTeacherMoney,setTeacherMoney} from '../../utils/data'
 import resourceManager from '@ohos.resourceManager';
 @Component
 export default struct Teacher {
@@ -51,6 +51,7 @@ export default struct Teacher {
     await setUserTeacher(getUserName(),this.teacherName)
     let result =  await getTeacherList();
     this.teacherList = result.data
+
   }
   build() {
     Column() {
@@ -99,6 +100,7 @@ export default struct Teacher {
               });
             }else{
               this.teacherName = item.name
+              setTeacherMoney(item.price)
               // 打开自定义弹窗
               this.dialogController.open()
             }
@@ -127,9 +129,27 @@ struct CustomDialogExample {
   controller: CustomDialogController
   confirm: (val: string,val2:string) => void
   answer: string = ''
-  startTime: string = ''
-  endTime: string = ''
+  @State startTime: string = ''
+  @State endTime: string = ''
+  @State maxValue: number = 0
+  @State uid: number = 0
+  @State money:number = 0
+  async aboutToAppear(){
+   let result =  await getUserCoupon(getUserName())
+    if(result.data){
 
+      for(let i = 0; i<result.data.length;i++){
+        if(this.maxValue < result.data[i].value){
+          this.maxValue =  result.data[i].value
+          this.uid = result.data[i].id
+        }
+
+      }
+    }
+    else{
+
+    }
+  }
   build() {
 
     Row() {
@@ -230,7 +250,9 @@ struct CustomDialogExample {
           .width('100%')
           .backgroundColor('#F5F5F5')
           .margin({ top: 15 })
-
+          Text("总金额："+Number(getTeacherMoney()) * (Number(this.endTime.substring(0, this.endTime.indexOf(":"))) - Number(this.startTime.substring(0, this.startTime.indexOf(":")))))
+          Text("可用红包："+this.maxValue)
+          Text("实际应付：" + (Number(getTeacherMoney()) * (Number(this.endTime.substring(0, this.endTime.indexOf(":"))) - Number(this.startTime.substring(0, this.startTime.indexOf(":")))) - this.maxValue))
           Row({ space: 40 }) {
             Button('取消')
               .onClick(() => {
@@ -238,9 +260,13 @@ struct CustomDialogExample {
                 this.controller.close()
               })
             Button('确定')
-              .onClick(() => {
+              .onClick(async () => {
+                let result:{code:number,message:string,data:number} = await getUserCount(getUserName())
+                this.money = result.data - (Number(getTeacherMoney()) * (Number(this.endTime.substring(0, this.endTime.indexOf(":"))) - Number(this.startTime.substring(0, this.startTime.indexOf(":")))) - this.maxValue)
+                await setUserCount({count:this.money,username:getUserName()})
                 // 关闭弹窗
                 this.controller.close()
+                await deleteUserCoupon(this.uid)
                 // 确认按钮回调函数
                 this.confirm(this.startTime, this.endTime)
               })

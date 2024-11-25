@@ -1,9 +1,16 @@
 import router from '@ohos.router';
 import {getUserName} from '../../../utils/data'
+import { getUserCount } from "../../../api/axios"
+
 @Entry
 @Component
 struct MyWalletPage {
   @State message: string = '我的钱包'
+  @State count:number = 0
+  async aboutToAppear(){
+    let result = await getUserCount(getUserName())
+    this.count = result.data
+  }
 
   build() {
     Column() {
@@ -24,11 +31,11 @@ struct MyWalletPage {
       .margin({bottom:10})
 
       Column() {
-        Text("张三")
+        Text(getUserName())
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .margin({bottom:40})
-        Text("3000" + '￥')
+        Text( this.count + '￥')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
       }
